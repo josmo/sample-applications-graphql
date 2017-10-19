@@ -1,0 +1,3 @@
+endpoints:
+  rest: REST_ENDPOINT
+  grpc: GRPC_ENDPOINT

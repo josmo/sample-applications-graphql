@@ -1,0 +1,29 @@
+pipeline:
+  build:
+    image: node:8.5.0
+    commands:
+      - yarn
+  publish:
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    repo: josmo/sample-applications-graphql
+    tag:
+      - latest
+      - ${DRONE_BUILD_NUMBER}
+    file: Dockerfile
+    insecure: true
+    when:
+      local: false
+      event: [ push ]
+  deploy:
+    image: peloton/drone-rancher
+    url: http://rancher.seattleslow.com
+    secrets: [ rancher_access_key, rancher_secret_key ]
+    service: gugg/sample-applications-graphql
+    docker_image: josmo/sample-applications-graphql:${DRONE_BUILD_NUMBER}
+    start_first: false
+    confirm: true
+    timeout: 260
+    when:
+      local: false
+      event: push
