@@ -17,6 +17,6 @@ const schema = makeExecutableSchema({
 });
 
 // uncommenting this file will use mocks instead of the connectors ;)
-addMockFunctionsToSchema({ schema, mocks });
+// addMockFunctionsToSchema({ schema, mocks });
 
 export default schema;
