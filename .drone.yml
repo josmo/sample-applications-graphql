@@ -19,7 +19,7 @@ pipeline:
     image: peloton/drone-rancher
     url: http://rancher.seattleslow.com
     secrets: [ rancher_access_key, rancher_secret_key ]
-    service: gugg/sample-applications-graphql
+    service: sample/sample-applications-graphql
     docker_image: josmo/sample-applications-graphql:${DRONE_BUILD_NUMBER}
     start_first: false
     confirm: true
