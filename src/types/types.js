@@ -4,6 +4,12 @@ type Application {
   applicationName: String
   description: String
   applicationURL: String
+  status: Status
+}
+
+type Status {
+  applicationStatus: String
+  currentNotes: String
 }
 `;
 
