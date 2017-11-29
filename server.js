@@ -9,7 +9,8 @@ const GRAPHQL_PORT = config.get('service.port');
 
 const graphQLServer = express().use('*', cors());
 
-graphQLServer.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+graphQLServer.use('/graphql', bodyParser.json(),
+  graphqlExpress({ schema, context: {}, tracing: true }));
 graphQLServer.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 graphQLServer.listen(GRAPHQL_PORT, () => console.log(
